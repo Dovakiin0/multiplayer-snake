@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Dovakiin0/multiplayer-snake#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "localtunnel": "^2.0.2",
     "socket.io": "^4.2.0"
   }
 }

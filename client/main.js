@@ -21,6 +21,7 @@ const newGameBtn = document.getElementById("newGameButton");
 const joinGameBtn = document.getElementById("joinGameButton");
 const gameCodeInput = document.getElementById("gameCodeInput");
 const gameCodeDisplay = document.getElementById("gameCodeDisplay");
+const scoreDisplay = document.getElementById("scoreDisplay");
 
 newGameBtn.addEventListener("click", newGame);
 joinGameBtn.addEventListener("click", joinGame);
@@ -39,6 +40,7 @@ function joinGame() {
 function init() {
   initialScreen.style.display = "none";
   gameScreen.style.display = "block";
+  scoreDisplay.innerText = "0";
 
   canvas = document.getElementById("canvas");
   ctx = canvas.getContext("2d");
@@ -63,6 +65,8 @@ function paintGame(state) {
 
   ctx.fillStyle = FOOD_COLOR;
   ctx.fillRect(food.x * size, food.y * size, size, size);
+
+  scoreDisplay.innerText = state.players[playerNumber - 1].score.toString();
 
   paintPlayer(state.players[0], size, SNAKE_COLOR);
   paintPlayer(state.players[1], size, "red");
@@ -115,6 +119,7 @@ function handleTooManyPlayers() {
 function reset() {
   playerNumber = null;
   gameCodeInput.value = "";
+  scoreDisplay.innerText = "0";
   gameCodeDisplay.innerText = "";
   initialScreen.style.display = "block";
   gameScreen.style.display = "block";
